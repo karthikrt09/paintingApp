@@ -27,7 +27,11 @@ class PaintingViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        <#code#>
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        paintingImageView.image = image
+        imagePicker.dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func cameraTapped(_ sender: Any) {

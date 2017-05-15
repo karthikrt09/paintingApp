@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         do{
             paints = try context.fetch(Paint.fetchRequest())
             tableView.reloadData()
-            print("test")
+            print(paints)
             
         }catch{
             

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class PaintingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var paintingImageView: UIImageView!
@@ -36,8 +37,18 @@ class PaintingViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func cameraTapped(_ sender: Any) {
         
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let paint = Paint(context: context)
+        paint.title = titleTextField.text
+        paint.image = NSData(data:UIImagePNGRepresentation(paintingImageView.image!)!)
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
     }
 
     @IBAction func addTapped(_ sender: Any) {
+        
+        
+        
     }
 }

@@ -28,8 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         do{
             paints = try context.fetch(Paint.fetchRequest())
             tableView.reloadData()
-            print(paints)
-            
+                    
         }catch{
             
         }
@@ -43,6 +42,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = UITableViewCell()
         let paint = paints[indexPath.row]
         cell.textLabel?.text = paint.title
+        cell.imageView?.image = UIImage(data: paint.image as! Data)
         return cell
     }
     

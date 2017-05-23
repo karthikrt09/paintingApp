@@ -10,7 +10,7 @@ import UIKit
 
 
 class PaintingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var paintingImageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     
@@ -18,10 +18,10 @@ class PaintingViewController: UIViewController, UIImagePickerControllerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         imagePicker.delegate = self
     }
-
+    
     @IBAction func photoTapped(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
@@ -37,6 +37,12 @@ class PaintingViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func cameraTapped(_ sender: Any) {
         
+        
+        
+    }
+    
+    @IBAction func addTapped(_ sender: Any) {
+        
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let paint = Paint(context: context)
         paint.title = titleTextField.text
@@ -44,11 +50,7 @@ class PaintingViewController: UIViewController, UIImagePickerControllerDelegate,
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
-    }
-
-    @IBAction func addTapped(_ sender: Any) {
-        
-        
+        navigationController!.popViewController(animated: true)
         
     }
 }
